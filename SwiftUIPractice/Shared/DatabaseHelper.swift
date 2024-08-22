@@ -8,26 +8,26 @@
 import Foundation
 
 struct DatabaseHelper {
-    func getProducts() async throws -> [Product] {
-        guard let url = URL(string: "https://dummyjson.com/products") else {
+    func getProducts() async throws -> Products {
+        guard let url = URL(string: "https://fakestoreapi.com/products") else {
             throw URLError(.badURL)
         }
 
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
         let products = try decoder.decode(Products.self, from: data)
-        return products.products
+        return products
     }
     
-    func getUsers() async throws -> [User] {
-        guard let url = URL(string: "https://dummyjson.com/users") else {
+    func getUsers() async throws -> Users {
+        guard let url = URL(string: "https://fakestoreapi.com/users") else {
             throw URLError(.badURL)
         }
 
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
         let users = try decoder.decode(Users.self, from: data)
-        return users.users
+        return users
     }
 }
 

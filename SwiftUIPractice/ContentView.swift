@@ -10,17 +10,16 @@ import SwiftfulUI
 import SwiftfulRouting
 
 struct ContentView: View {
-    @State private var users: [User] = []
-    @State private var products: [Product] = []
-    
-    
-    
+    @Environment(\.router) var router
     var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(users) { user in
-                    Text(user.firstName)
-                        .foregroundStyle(.spotifyGreen)
+        List{
+            Button("Open Spotify UI") {
+                router.showScreen(.fullScreenCover) { router in
+                    SpotifyHomeView(
+                        viewModel: SpotifyHomeViewModel(
+                            router: router
+                        )
+                    )
                 }
             }
         }
@@ -28,5 +27,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    RouterView { _ in
+        ContentView()
+    }
 }

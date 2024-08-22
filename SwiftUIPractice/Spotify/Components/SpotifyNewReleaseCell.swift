@@ -39,7 +39,7 @@ struct SpotifyNewReleaseCell: View {
             .frame(maxWidth: .infinity,alignment: .leading)
             HStack{
                 ImageLoaderView(urlString: imageName)
-                    .frame(width: 140, height: 140)
+                    .frame(width: 140)
                 VStack(alignment: .leading, spacing: 32){
                     VStack(alignment: .leading, spacing: 2){
                         if let title {
