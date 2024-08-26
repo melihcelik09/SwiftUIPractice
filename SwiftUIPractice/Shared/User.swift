@@ -12,6 +12,36 @@ struct User: Codable,Identifiable{
     var id: Int?
     var email, username, password, phone: String?
     var name: Name?
+    var work: String { "Worker as some job"}
+    var education: String {"Graduate Degree"}
+    var about: String {"This is a sentence about me that will look good on my profile"}
+    var basics: [UserInterest] {
+        [
+        UserInterest(iconName: "ruler", emoji: nil, text: "1.85"),
+        UserInterest(iconName: "graduationcap", emoji: nil, text: education),
+        UserInterest(iconName: "wineglass", emoji: nil, text: "Socially"),
+        UserInterest(iconName: "moon.stars.fill", emoji: nil, text: "Virgo")
+        
+        ]
+    }
+    
+    var interests: [UserInterest] {
+        [
+        UserInterest(iconName: nil, emoji: "👟", text: "Running"),
+        UserInterest(iconName: nil, emoji: "💪🏻", text: "Gym"),
+        UserInterest(iconName: nil, emoji: "🎧", text: "Music"),
+        UserInterest(iconName: nil, emoji: "👨🏼‍🍳", text: "Cooking")
+        
+        ]
+    }
+    
+    var gallery: [String]{
+        [
+            Constants.randomImage,
+            Constants.img1,
+            Constants.img2,
+        ]
+    }
     
     static var mock: User{
         User(
